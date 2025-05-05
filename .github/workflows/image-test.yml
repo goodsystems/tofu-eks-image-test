@@ -1,0 +1,17 @@
+name: image-test
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+  push:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  call-workflow:
+    uses: goodsystems/reusable-workflows-terraform-aws/.github/workflows/reusable-workflows-terraform-aws.yml@opentofu
+    with:
+      project: "image-test"
